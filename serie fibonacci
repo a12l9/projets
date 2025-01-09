@@ -1,0 +1,32 @@
+#We have to create the Fibonacci series up to the number indicated by the user.
+
+variable1 = 1
+variable2 = 2
+
+v1 = 1
+v2 = 1
+v3 = 1
+
+number = int(input('input a number'))
+
+list = []
+list.extend([1,1])
+while True:
+    v3 = v1 + v2 #1 + 1 = 2
+    v1 = v2 + v3 #2 + 1 = 3
+    v2 = v3 + v1 #2 + 3 = 5
+    if v3 <= number:
+        list.append(v3)
+    else:
+        break
+    if v1 <= number:
+        list.append(v1)
+    else:
+        break
+    if v2 <= number:
+        list.append(v2)
+    else:
+        break
+    variable1 = v1
+    
+print(list)

@@ -1,0 +1,36 @@
+from random import randint
+
+def obtener_eleccion_usuario():
+    while True:
+        try:
+            usuario = int(input("Decide, 1 for rock, 2 for paper, 3 for scissors: "))
+            if usuario in range(1,4):
+                return usuario 
+            else:
+                print("Invalid choice, please try again")
+        except ValueError:
+            print("You have not entered the correct characters, please try again.")
+
+def eleccion(personaje,nombre):
+    opciones = {1:"rock",2:"paper",3:"scissors"}
+    eleccion_final = opciones.get(personaje,"eleccion no valida")
+    return f"{nombre} choose: {eleccion_final}"
+
+def batalla(usuario, pc):
+    ganadas = {
+        (1, 3): "You won",  
+        (2, 1): "You won",  
+        (3, 2): "You won"   
+    }
+    if usuario == pc:
+        return "Draw"
+    return ganadas.get((usuario, pc), "You lose")
+
+def jugar():
+    usuario = obtener_eleccion_usuario()
+    pc = randint(1,3)
+    print(eleccion(usuario,"You"))
+    print(eleccion(pc,"PC"))
+    print(batalla(usuario,pc))    
+
+jugar()
